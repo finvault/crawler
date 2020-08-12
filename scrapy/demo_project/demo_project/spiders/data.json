@@ -1,0 +1,4 @@
+[
+{"fix_insured_mortgage_rate": ["4.49", "2.49", "2.49", "2.49", "2.49", "2.49", "3.39", "3.64"], "fix_conventional_mortgage_rate": ["4.49", "3.34", "2.89", "2.79", "2.74", "2.69", "3.39", "3.64"], "fix_insured_mortgage_rate_time": ["6 month", "1 year", "2 year", "3 year", "4 year", "5 year", "7 year", "10 year"], "fix_conventional_mortgage_rate_time": ["6 month", "1 year", "2 year", "3 year", "4 year", "5 year", "7 year", "10 year"]},
+{"variable_insured_mortgage_rate": "Insured 5-Year Term: Prime - 0.25% for the entire term.", "variable_conventional_mortgage_rate": "Conventional 5-Year Term: Prime - 0.10% for the entire term.", "open_mortgage_rate": "6-Month Term: 7.30%"}
+]
