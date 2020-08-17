@@ -14,16 +14,18 @@ from scrapy.loader import ItemLoader
 class FirstHalf:
 
     def __call__(self, values):
-        length = len(values)
-        middle_index = length // 2
-        return values[:middle_index]
+        # length = len(values)
+        # middle_index = length // 2
+        # return values[:middle_index]
+        return values
         
 class SecondHalf:
 
     def __call__(self, values):
-        length = len(values)
-        middle_index = length // 2
-        return values[middle_index:]
+        # length = len(values)
+        # middle_index = length // 2
+        # return values[middle_index:]
+        return values
 
 class Slice():
     def __init__(self, index):
@@ -71,16 +73,5 @@ class FixedMortgageItem(scrapy.Item):
         output_processor = SecondHalf()
     )
 
-class VariableMortgageItem(scrapy.Item):
-    variable_insured_mortgage_rate = scrapy.Field(
-        output_processor = Slice(0)
-    )
-    variable_conventional_mortgage_rate = scrapy.Field(
-        output_processor = Slice(1)
-    )
-    open_mortgage_rate = scrapy.Field(
-        output_processor = Slice(2)
-    )
-    
 
         

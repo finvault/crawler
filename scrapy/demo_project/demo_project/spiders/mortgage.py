@@ -1,5 +1,5 @@
 import scrapy 
-from demo_project.items import FixedMortgageItem, CustomLoader, VariableMortgageItem
+from demo_project.items import FixedMortgageItem, CustomLoader
 from scrapy.crawler import CrawlerProcess
 from scrapy.loader import ItemLoader
 from scrapy import Request
@@ -14,19 +14,12 @@ class MortgageSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        for fix_rate in response.xpath("//div[@class='table-responsive margin-bottom']"):
+        for fix_rate in response.xpath("//table"):
             l = CustomLoader(item = FixedMortgageItem(), selector = fix_rate)
-            l.add_xpath('fix_insured_mortgage_rate',"//div[@class='table-responsive margin-bottom']/table/tbody/tr/td")
-            l.add_xpath('fix_conventional_mortgage_rate',"//div[@class='table-responsive margin-bottom']/table/tbody/tr/td")
-            l.add_xpath('fix_insured_mortgage_rate_time',"//div[@class='table-responsive margin-bottom']/table/tbody/tr/td/@aria-label")
-            l.add_xpath('fix_conventional_mortgage_rate_time',"//div[@class='table-responsive margin-bottom']/table/tbody/tr/td/@aria-label")
+            l.add_xpath('fix_insured_mortgage_rate',"//table/tbody/tr/td")
+            l.add_xpath('fix_insured_mortgage_rate',"//table/tbody/tr/th")
             yield l.load_item()
 
 
-        for variable_rate in response.xpath("//p[@class='o-text-small']"):
-            r = CustomLoader(item = VariableMortgageItem(), selector = variable_rate)
-            r.add_xpath('variable_insured_mortgage_rate', "//p[@class='o-text-small']")
-            r.add_xpath('variable_conventional_mortgage_rate', "//p[@class='o-text-small']")
-            r.add_xpath('open_mortgage_rate', "//p[@class='o-text-small']")
-            yield r.load_item()
+     
    
